@@ -12,7 +12,12 @@ version = "0.2"
 setup(
     name=name,
     version=version,
-    install_requires=["opencv-contrib-python", 'sphinx'],
+    install_requires=['opencv-contrib-python',
+                      'sphinx',
+                      'numpy',
+                      'scipy',
+                      'matplotlib',
+                      'imutils'],
     packages=find_packages(),
     url="https://github.com/adjiap/open-cv-test",
     license="MIT License",
@@ -23,10 +28,12 @@ setup(
         "Operating System :: Microsoft :: Windows :: Windows 10",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+        "Topic :: Scientific/Engineering :: Image Recognition",
     ],
     author="Adji Arioputro",
     maintainer="Adji Arioputro",
-    description="Package for running Machine Learning on Image Processing using OpenCV",
+    description="Test for running Machine Learning on Image Processing using OpenCV",
     command_options={
         "build_sphinx": {
             "project": ("setup.py", name),
