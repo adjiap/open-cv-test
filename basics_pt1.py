@@ -8,7 +8,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 
-def main():
+def basics_pt1():
     print("Start Open CV Test")
 
     # Display image
@@ -64,5 +64,65 @@ def main():
     cv2.imshow("OpenCV Rotation", rotated)
     cv2.waitKey(0)
 
+    # Here we blur an image using a Gaussian Blur with a 11x11 kernel to the image to smooth it,
+    # useful when reducing high frequency noise
+    img_blurred = cv2.GaussianBlur(image, (11,11), 0)
+    cv2.imshow("Blurred", img_blurred)
+    cv2.waitKey(0)
+
+    # Here we draw a 2px thick red rectangle surrounding the faces
+    # starting point or pt1 is 320, 60 at the top left corner
+    # endpoint or pt2 is 420, 160 at the bottom right corner
+    # then it's BGR color, and finally thickness in pixels
+    output = image.copy()
+    top_left_start = (320, 60)
+    bot_right_end = (420, 160)
+    BGR = (0, 0, 255)
+    line_thickness = 2
+    cv2.rectangle(output,
+                  top_left_start,
+                  bot_right_end,
+                  BGR, line_thickness)
+    # and here we have a filled circle of a radius of 20 pix
+    # with the center at 300,150, and the color blue
+    circ_center = (300, 150)
+    radius_in_pix = 20
+    BGR = (255, 0, 0)
+    line_thickness = -1 # -1 means filled
+    cv2.circle(output, circ_center, radius_in_pix, BGR, line_thickness)
+    cv2.imshow("With Rectangle & circle", output)
+    cv2.waitKey(0)
+
+    # Here we create a line, similar format as rectangle
+    output_line = image.copy()
+    line_thickness = 2
+    BGR = (0, 255, 0)
+    cv2.line(output_line,
+             top_left_start,
+             bot_right_end,
+             BGR,
+             line_thickness)
+    cv2.imshow("With line", output_line)
+    cv2.waitKey(0)
+
+    # Lastly we learn about writing in opencv
+    output_text_img = image.copy()
+    text = "Just trying it out"
+    startpoint = (50, 150)
+    font = cv2.FONT_HERSHEY_COMPLEX
+    font_size = 2.2
+    BGR = (100, 100, 100)
+    font_thickness =2
+    cv2.putText(output_text_img,
+                text,
+                startpoint,
+                font,
+                font_size,
+                BGR,
+                font_thickness)
+    cv2.imshow("Show Text", output_text_img)
+    cv2.waitKey(0)
+
+
 if __name__ == '__main__':
-    main()
+    basics_pt1()
