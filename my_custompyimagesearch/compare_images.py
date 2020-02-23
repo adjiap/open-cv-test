@@ -9,7 +9,7 @@ import cv2
 import argparse
 
 
-def getArgs():
+def get_args():
     # construct the argument parse and parse the arguments
     ap = argparse.ArgumentParser()
     ap.add_argument("-f", "--first", required=True, help="first input image")
@@ -51,5 +51,5 @@ def compare_images():
 
 
 if __name__ == "__main__":
-    args = getArgs()
+    args = get_args()
     compare_images()
